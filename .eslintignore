@@ -1,0 +1,14 @@
+/**/node_modules/*
+node_modules/
+
+dist/
+build/
+out//**/node_modules/*
+node_modules/
+vite.config.ts
+dist/
+build/
+out/
+**/*.cjs
+!**/*.ts
+vite.config.ts
