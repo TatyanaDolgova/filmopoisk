@@ -1,7 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
+import authReducer from '../../../entities/Auth/model/slice';
 
 const rootReducer = combineReducers({
-  // movie: movieReducer,
+  auth: authReducer,
 });
 
 export default rootReducer;
