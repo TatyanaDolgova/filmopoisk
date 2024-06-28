@@ -2,14 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../app/providers/StoreProvider/store';
 
 export interface FilterState {
-  search: string;
+  title: string;
   genre: string;
   year: string;
   page: number;
 }
 
 const initialState: FilterState = {
-  search: '',
+  title: '',
   genre: '',
   year: '',
   page: 1,
@@ -20,7 +20,7 @@ const filterSlice = createSlice({
   initialState,
   reducers: {
     setSearch(state, action: PayloadAction<string>) {
-      state.search = action.payload;
+      state.title = action.payload;
     },
     setGenre(state, action: PayloadAction<string>) {
       state.genre = action.payload;

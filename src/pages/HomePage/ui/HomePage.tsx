@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './HomePage.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import movieApi, { ShortMovieInfo } from '../../../shared/api/api';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   selectFilters,
   setSearch,
@@ -10,6 +11,11 @@ import {
   setPage,
 } from '../model/slice';
 import MovieCard from '../../../shared/ui/MovieCard/MovieCard';
+import DropDownArrow from '../../../shared/ui/DropDownArrow/DropDownArrow';
+import SearchIcon from '../../../shared/ui/SearchIcon/SearchIcon';
+import CloseIcon from '../../../shared/ui/CloseIcon/CloseIcon';
+import debounce from '../../../shared/model/debounce';
+import Loader from '../../../shared/ui/Loader/Loader';
 
 export const GENRES: Record<string, string> = {
   '': 'Не выбран',
@@ -40,15 +46,24 @@ const YEARS: Record<string, string> = {
 const HomePage: React.FC = () => {
   const [isGenreOpen, setIsGenreOpen] = useState(false);
   const [isYearOpen, setIsYearOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const { data, error, isLoading } = movieApi.useGetMoviesQuery(filters);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setSearch(e.target.value));
+    const searchTerm = e.target.value;
+    setSearchTerm(searchTerm);
+    debouncedDispatchSearch(searchTerm);
   };
+
+  const debouncedDispatchSearch = debounce((searchTerm: string) => {
+    dispatch(setSearch(searchTerm));
+  }, 500);
 
   const handlePageChange = (page: number) => {
     dispatch(setPage(page));
@@ -67,13 +82,41 @@ const HomePage: React.FC = () => {
   const handleYearChange = (option: string) => {
     dispatch(setYear(option));
     setIsYearOpen(false);
-    console.log(filters.year);
   };
 
   const handleGenreChange = (option: string) => {
     dispatch(setGenre(option));
     setIsGenreOpen(false);
   };
+
+  const clearSearch = () => {
+    setSearchTerm('');
+    dispatch(setSearch(''));
+  };
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const search = params.get('title') || '';
+    const genre = params.get('genre') || '';
+    const year = params.get('release_year') || '';
+    const page = parseInt(params.get('page') || '1', 10);
+
+    dispatch(setSearch(search));
+    dispatch(setGenre(genre));
+    dispatch(setYear(year));
+    dispatch(setPage(page));
+  }, [location.search, dispatch]);
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (filters.title) params.append('title', filters.title);
+    if (filters.genre) params.append('genre', filters.genre);
+    if (filters.year && filters.year !== '0')
+      params.append('release_year', filters.year);
+    params.append('page', filters.page.toString());
+
+    navigate({ search: params.toString() });
+  }, [filters, navigate]);
 
   return (
     <div className={styles.movieListPage}>
@@ -83,11 +126,13 @@ const HomePage: React.FC = () => {
           Жанр
           <div className={styles.selectContainer}>
             <div
-              className={`${styles.selectHeader}`}
+              className={`${styles.selectHeader} ${filters.genre !== '' ? styles.selected : ''}`}
               onClick={toggleGenreDropdown}
             >
-              {filters.genre === '' ? 'Выберите жанр' : GENRES[filters.genre]}
-              <span className="select-arrow">&#9660;</span>
+              {filters.genre === '' || filters.genre === '0'
+                ? 'Выберите жанр'
+                : GENRES[filters.genre]}
+              <DropDownArrow isOpen={isGenreOpen} />
             </div>
             {isGenreOpen && (
               <ul className={styles.selectOptions}>
@@ -108,13 +153,13 @@ const HomePage: React.FC = () => {
           Год выпуска
           <div className={styles.selectContainer}>
             <div
-              className={`${styles.selectHeader}`}
+              className={`${styles.selectHeader} ${filters.year !== '' ? styles.selected : ''}`}
               onClick={toggleYearDropdown}
             >
               {filters.year === '' || filters.year === '0'
                 ? 'Выберите год'
                 : YEARS[filters.year]}
-              <span className="select-arrow">&#9660;</span>
+              <DropDownArrow isOpen={isYearOpen} />
             </div>
             {isYearOpen && (
               <ul className={styles.selectOptions}>
@@ -133,13 +178,18 @@ const HomePage: React.FC = () => {
         </label>
       </div>
       <div className={styles.moveListContainer}>
-        <input
-          type="text"
-          value={filters.search}
-          onChange={handleSearchChange}
-          placeholder="Поиск по названию"
-        />
-        {isLoading && <p>Загрузка...</p>}
+        <div className={styles.searchContainer}>
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            placeholder="Поиск по названию"
+            className={styles.searchInput}
+          />
+          <SearchIcon />
+          {filters.title && <CloseIcon onClick={clearSearch} />}
+        </div>
+        {isLoading && <Loader />}
         {error && <p>Ошибка загрузки фильмов</p>}
         <div className={styles.movieList}>
           {data?.search_result.map((movie: ShortMovieInfo) => (
