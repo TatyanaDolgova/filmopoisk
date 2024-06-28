@@ -5,13 +5,14 @@ import classNames from 'classnames';
 import { checkAuth, login } from '../../model/slice';
 import Modal from '../../../../shared/ui/Modal/Modal';
 import styles from './LoginModal.module.css';
+import { AppDispatch } from '../../../../app/providers/StoreProvider/store';
 
 interface LoginModalProps {
   onClose: () => void;
 }
 
 const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState(false);

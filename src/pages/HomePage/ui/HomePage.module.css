@@ -1,8 +1,98 @@
-.container {
-  padding: 20px;
+.movieListPage {
+  padding: 20px 32px;
+  background: rgb(237, 237, 237);
+  display: flex;
+  gap: 24px;
 }
 
 .title {
   font-size: 2rem;
   color: #333;
+}
+
+.filters {
+  padding: 24px;
+  border-radius: 8px;
+  background: rgb(255, 255, 255);
+  max-height: 240px;
+  width: 410px;
+}
+
+.filtersTitle {
+  color: rgb(27, 31, 35);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.filterLabel {
+  color: rgb(27, 31, 35);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+  margin-bottom: 4px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.filterLabel:last-of-type {
+  margin-bottom: 0;
+}
+
+.selectContainer {
+  position: relative;
+  padding: 10px 16px;
+  display: block;
+  border: 1px solid rgb(225, 227, 230);
+  border-radius: 8px;
+  width: 100%;
+  color: rgb(171, 171, 171);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+
+}
+
+.selectHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.selectOptions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  z-index: 1;
+  color: rgb(27, 31, 35);
+  list-style-type: none;
+}
+
+.selectOption {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.moveListContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.movieList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
