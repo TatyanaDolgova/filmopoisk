@@ -1,3 +1,4 @@
+import Rating from '../Rating/Rating';
 import styles from './MovieCard.module.css';
 
 interface MovieCardProps {
@@ -31,6 +32,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
           <p className={styles.description}>{movie.description}</p>
         </div>
       </div>
+      <Rating rating={movie.rating} />
     </div>
   );
 };

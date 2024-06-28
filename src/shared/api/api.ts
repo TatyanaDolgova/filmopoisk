@@ -25,28 +25,6 @@ export interface GetMoviesResponse {
   total_pages: number;
 }
 
-type Actor = {
-  name: string;
-  photo: string;
-};
-
-type FullMovieInfo = {
-  id: string;
-  title: string;
-  description: string;
-  release_year: number;
-  poster: string;
-  genre: string;
-  rating: string;
-  total_rates_count: string;
-  actors: Actor[];
-};
-
-// type RateMovieRequest = {
-//   movieId: string;
-//   user_rate: number;
-// };
-
 const movieApi = createApi({
   reducerPath: 'movieApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3030/api/v1' }),
@@ -58,22 +36,13 @@ const movieApi = createApi({
         if (genre) params.append('genre', genre);
         if (year && year !== '0') params.append('release_year', year);
         params.append('page', page.toString());
+        params.append('limit', '10');
 
         return {
           url: `/search?${params.toString()}`,
         };
       },
     }),
-    // rateMovie: builder.mutation<void, RateMovieRequest>({
-    //   query: (body) => ({
-    //     url: '/rateMovie',
-    //     method: 'POST',
-    //     headers: {
-    //       Authorization: `Bearer ${body.token}`,
-    //     },
-    //     body: { movieId: body.movieId, user_rate: body.user_rate },
-    //   }),
-    // }),
   }),
 });
 

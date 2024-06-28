@@ -1,4 +1,4 @@
-import styles from './CloseIcon.module.css'; // Подключаем CSS стили для иконки
+import styles from './CloseIcon.module.css';
 
 const CloseIcon: React.FC<{ onClick: () => void }> = ({ onClick }) => {
   return (

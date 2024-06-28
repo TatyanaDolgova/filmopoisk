@@ -16,6 +16,7 @@ import SearchIcon from '../../../shared/ui/SearchIcon/SearchIcon';
 import CloseIcon from '../../../shared/ui/CloseIcon/CloseIcon';
 import debounce from '../../../shared/model/debounce';
 import Loader from '../../../shared/ui/Loader/Loader';
+import { ArrowLeft, ArrowRight } from '../../../shared/ui/Arrows/Arrows';
 
 export const GENRES: Record<string, string> = {
   '': 'Не выбран',
@@ -53,7 +54,7 @@ const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { data, error, isLoading } = movieApi.useGetMoviesQuery(filters);
+  const { data, isLoading } = movieApi.useGetMoviesQuery(filters);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
@@ -63,6 +64,7 @@ const HomePage: React.FC = () => {
 
   const debouncedDispatchSearch = debounce((searchTerm: string) => {
     dispatch(setSearch(searchTerm));
+    dispatch(setPage(1));
   }, 500);
 
   const handlePageChange = (page: number) => {
@@ -81,11 +83,13 @@ const HomePage: React.FC = () => {
 
   const handleYearChange = (option: string) => {
     dispatch(setYear(option));
+    dispatch(setPage(1));
     setIsYearOpen(false);
   };
 
   const handleGenreChange = (option: string) => {
     dispatch(setGenre(option));
+    dispatch(setPage(1));
     setIsGenreOpen(false);
   };
 
@@ -190,23 +194,38 @@ const HomePage: React.FC = () => {
           {filters.title && <CloseIcon onClick={clearSearch} />}
         </div>
         {isLoading && <Loader />}
-        {error && <p>Ошибка загрузки фильмов</p>}
+        {data?.search_result.length === 0 && (
+          <div className={styles.notFound}>
+            <h3 className={styles.notFoundTitle}>Фильмы не найдены</h3>
+            <p className={styles.notFoundText}>
+              Измените запрос и попробуйте снова
+            </p>
+          </div>
+        )}
         <div className={styles.movieList}>
           {data?.search_result.map((movie: ShortMovieInfo) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
-        <div className={styles.pagination}>
-          <button
-            onClick={() => handlePageChange(filters.page - 1)}
-            disabled={filters.page === 1}
-          >
-            Назад
-          </button>
-          <button onClick={() => handlePageChange(filters.page + 1)}>
-            Вперед
-          </button>
-        </div>
+        {data?.search_result.length !== 0 && !isLoading && (
+          <div className={styles.pagination}>
+            <button
+              className={styles.paginationBtn}
+              onClick={() => handlePageChange(filters.page - 1)}
+              disabled={filters.page === 1}
+            >
+              <ArrowLeft />
+            </button>
+            <span>{filters.page}</span>
+            <button
+              className={styles.paginationBtn}
+              disabled={filters.page === data?.total_pages}
+              onClick={() => handlePageChange(filters.page + 1)}
+            >
+              <ArrowRight />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-// import styles from './SearchIcon.module.css';
+import styles from './Loader.module.css';
 
 const Loader: React.FC = () => {
   return (
@@ -8,10 +8,7 @@ const Loader: React.FC = () => {
       preserveAspectRatio="xMidYMid"
       width="50"
       height="50"
-      style={{
-        shapeRendering: 'auto',
-        display: 'block',
-      }}
+      className={styles.loader}
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
       <g>
