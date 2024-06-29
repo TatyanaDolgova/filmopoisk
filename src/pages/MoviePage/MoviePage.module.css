@@ -1,0 +1,27 @@
+.container {
+  padding: 20px 31px;
+  background: rgb(237, 237, 237);
+  min-height: calc(100vh - 88px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.actorsList {
+  display: flex;
+  gap: 24px;
+}
+
+.actors {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.actorsTitle {
+  color: rgb(27, 31, 35);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0px;
+}

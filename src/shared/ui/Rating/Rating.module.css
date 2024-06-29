@@ -1,0 +1,19 @@
+.digitInactive {
+  color: rgb(171, 171, 171);
+}
+
+.stars {
+  display: flex;
+  gap: 10px;
+}
+
+.starContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.authenticated {
+  cursor: pointer;
+}

@@ -1,0 +1,64 @@
+.movieCard {
+  padding: 24px;
+  border-radius: 8px;
+  background: rgb(255, 255, 255);
+  width: 100%;
+  display: flex;
+  gap: 24px;
+  cursor: pointer;
+}
+
+.poster {
+  width: 100px;
+  height: 120px;
+  border-radius: 8px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.title {
+  color: rgb(27, 31, 35);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0px;
+  margin-bottom: 16px;
+}
+
+.details {
+  margin-bottom: 12px;
+  display: flex;
+}
+
+.details:last-of-type {
+  margin-bottom: 0;
+}
+
+.label {
+  display: inline-block;
+  width: 90px;
+  color: rgb(171, 171, 171);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+  margin-right: 16px;
+}
+
+.genres,
+.year,
+.description {
+  display: inline-block;
+  font-size: 14px;
+  max-width: 600px;
+
+  color: rgb(27, 31, 35);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+}

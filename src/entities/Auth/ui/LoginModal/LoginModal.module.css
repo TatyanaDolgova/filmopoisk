@@ -1,0 +1,81 @@
+.loginModal {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 340px;
+  /* max-width: 100%; */
+}
+
+.modalTitle {
+  font-size: 1.25rem;
+  line-height: 20px;
+  font-weight: 600;
+  color: #1B1F23;
+  margin: 0;
+  cursor: default;
+}
+
+.input {
+  margin-bottom: 10px;
+  padding: 12px;
+  width: calc(100% - 24px);
+  border: 1px solid rgb(225, 227, 230);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+
+.label {
+  line-height: 20px;
+  margin-bottom: 4px;
+}
+
+.required {
+  position: relative;
+  margin-right: 4px;
+}
+
+.required::before {
+  content: '*';
+  color: #ff4d4f;
+  position: absolute;
+  right: -10px;
+}
+
+.button {
+  padding: 10px 0;
+  display: inline-flex;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+
+}
+
+.buttonLogin {
+  background-color: #ff5500;
+  color: #fff;
+  width: 72px;
+  margin-right: 8px;
+}
+
+.buttonLogout {
+  background-color: transparent;
+  border: 1px solid #ff5500;
+  color: #ff5500;
+  width: 98px;
+}
+
+.errorMsg {
+  color: #ff4d4f;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+.inputError {
+  border-color: #ff4d4f;
+}
