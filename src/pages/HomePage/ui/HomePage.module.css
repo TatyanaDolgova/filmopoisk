@@ -103,6 +103,10 @@
   color: rgb(27, 31, 35);
 }
 
+.selectedBorder {
+  border: 1px solid rgb(255, 85, 0);
+}
+
 .arrow {
   width: 0;
   height: 0;
@@ -180,6 +184,7 @@
 }
 
 .paginationBtn {
+  cursor: pointer;
   width: 32px;
   height: 32px;
   border-radius: 32px;

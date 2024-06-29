@@ -128,9 +128,11 @@ const HomePage: React.FC = () => {
         <h3 className={styles.filtersTitle}>Фильтр</h3>
         <label className={styles.filterLabel}>
           Жанр
-          <div className={styles.selectContainer}>
+          <div
+            className={`${styles.selectContainer} ${isGenreOpen ? styles.selectedBorder : ''}`}
+          >
             <div
-              className={`${styles.selectHeader} ${filters.genre !== '' ? styles.selected : ''}`}
+              className={`${styles.selectHeader} ${filters.genre !== '' ? styles.selected : ''} `}
               onClick={toggleGenreDropdown}
             >
               {filters.genre === '' || filters.genre === '0'
@@ -155,7 +157,9 @@ const HomePage: React.FC = () => {
         </label>
         <label className={styles.filterLabel}>
           Год выпуска
-          <div className={styles.selectContainer}>
+          <div
+            className={`${styles.selectContainer} ${isYearOpen ? styles.selectedBorder : ''}`}
+          >
             <div
               className={`${styles.selectHeader} ${filters.year !== '' ? styles.selected : ''}`}
               onClick={toggleYearDropdown}

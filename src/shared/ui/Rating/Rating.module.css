@@ -2,14 +2,18 @@
   color: rgb(171, 171, 171);
 }
 
-.container {
+.stars {
+  display: flex;
+  gap: 10px;
+}
+
+.starContainer {
   display: flex;
   flex-direction: column;
   gap: 8px;
   align-items: center;
 }
 
-.stars {
-  display: flex;
-  gap: 10px;
+.authenticated {
+  cursor: pointer;
 }

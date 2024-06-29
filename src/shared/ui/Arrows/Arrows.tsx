@@ -1,4 +1,4 @@
-import styles from './Arrows.module.css';
+// import styles from './Arrows.module.css';
 
 export const ArrowLeft: React.FC = () => {
   return (

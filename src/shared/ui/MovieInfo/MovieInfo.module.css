@@ -1,0 +1,53 @@
+.movieCard {
+  border-radius: 8px;
+  background: rgb(255, 255, 255);
+  padding: 24px;
+  display: flex;
+  gap: 32px;
+}
+
+.poster {
+  width: 400px;
+  height: 500px;
+  border-radius: 8px;
+}
+
+.title {
+  color: rgb(27, 31, 35);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0px;
+  margin-bottom: 32px;
+}
+
+.details {
+  margin-bottom: 16px;
+}
+
+.label {
+  margin-right: 8px;
+  color: rgb(27, 31, 35);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+.genres,
+.year,
+.rating {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+.description {
+  color: rgb(27, 31, 35);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  margin-top: 16px;
+}
