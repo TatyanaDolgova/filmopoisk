@@ -1,10 +1,11 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import styles from './MovieInfo.module.css';
 import Rating from '../Rating/Rating';
-import { useSelector } from 'react-redux';
 import { selectIsAuthenticated } from '../../../entities/Auth/model/slice';
 import movieApi from '../../api/api';
-import { useState } from 'react';
 
 type Actor = {
   name: string;
@@ -74,7 +75,7 @@ const MovieInfo: React.FC<MovieInfoProps> = ({ movie }) => {
       <Rating
         rating={movie.rating}
         onRate={isAuthenticated ? handleRating : undefined}
-        auth={isAuthenticated ? true : false}
+        auth={!!isAuthenticated}
       />
     </div>
   );

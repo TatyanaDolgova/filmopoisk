@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styles from './Rating.module.css';
 import { StarGreate, StarOrange, StarWhite } from '../Stars/Stars';
 import debounce from '../../model/debounce';
+
 interface RatingProps {
   rating: string;
   onRate?: (userRate: number) => void;

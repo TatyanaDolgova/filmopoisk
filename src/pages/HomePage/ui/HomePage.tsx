@@ -1,8 +1,9 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
-import styles from './HomePage.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import movieApi, { ShortMovieInfo } from '../../../shared/api/api';
 import { useNavigate, useLocation } from 'react-router-dom';
+import styles from './HomePage.module.css';
+import movieApi, { ShortMovieInfo } from '../../../shared/api/api';
 import {
   selectFilters,
   setSearch,

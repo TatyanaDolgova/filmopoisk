@@ -37,12 +37,12 @@ export interface FullMovieInfo {
   actors: Actor[];
 }
 
-interface RateMovieRequest {
+export interface RateMovieRequest {
   movieId: string;
   user_rate: number;
 }
 
-interface RateMovieResponse {
+export interface RateMovieResponse {
   movieId: string;
   newAverageRate: string;
   newTotalRatesCount: number;

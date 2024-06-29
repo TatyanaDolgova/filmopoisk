@@ -1,4 +1,6 @@
-export const StarWhite: React.FC = () => {
+import React from "react";
+
+export function StarWhite() {
   return (
     <svg
       width="14.329102"
@@ -18,9 +20,9 @@ export const StarWhite: React.FC = () => {
       />
     </svg>
   );
-};
+}
 
-export const StarOrange: React.FC = () => {
+export function StarOrange() {
   return (
     <svg
       width="14.329102"
@@ -40,9 +42,9 @@ export const StarOrange: React.FC = () => {
       />
     </svg>
   );
-};
+}
 
-export const StarGreate: React.FC = () => {
+export function StarGreate() {
   return (
     <svg
       width="14.329102"
@@ -62,4 +64,4 @@ export const StarGreate: React.FC = () => {
       />
     </svg>
   );
-};
+}

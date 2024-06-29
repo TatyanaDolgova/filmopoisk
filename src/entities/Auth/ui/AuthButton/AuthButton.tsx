@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import classNames from 'classnames';
 import { logout, selectIsAuthenticated } from '../../model/slice';
 import styles from './AuthButton.module.css';
-import classNames from 'classnames';
 
 interface AuthButtonProps {
   onLoginClick: () => void;
@@ -20,7 +20,7 @@ const AuthButton: React.FC<AuthButtonProps> = ({ onLoginClick }) => {
     <div className={styles.authButton}>
       {isAuthenticated ? (
         <div className={styles.container}>
-          <div className={styles.person}></div>
+          <div className={styles.person} />
           <button
             onClick={handleLogoutClick}
             className={classNames(styles.button, styles.buttonLogout)}

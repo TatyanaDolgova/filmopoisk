@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './CloseIcon.module.css';
 
 const CloseIcon: React.FC<{ onClick: () => void }> = ({ onClick }) => {

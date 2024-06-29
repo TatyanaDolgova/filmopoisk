@@ -22,16 +22,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
     if (!username) {
       setUsernameError(true);
       return;
-    } else {
-      setUsernameError(false);
     }
+    setUsernameError(false);
 
     if (!password) {
       setPasswordError(true);
       return;
-    } else {
-      setPasswordError(false);
     }
+    setPasswordError(false);
 
     try {
       await dispatch(login({ username, password })).unwrap();

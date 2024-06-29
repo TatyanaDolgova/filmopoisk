@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Loader.module.css';
 
 const Loader: React.FC = () => {
@@ -23,7 +24,7 @@ const Loader: React.FC = () => {
                 begin="-0.875s"
                 type="scale"
                 attributeName="transform"
-              ></animateTransform>
+              />
               <animate
                 begin="-0.875s"
                 values="1;0"
@@ -31,7 +32,7 @@ const Loader: React.FC = () => {
                 dur="1s"
                 keyTimes="0;1"
                 attributeName="fillOpacity"
-              ></animate>
+              />
             </circle>
           </g>
         </g>
@@ -46,7 +47,7 @@ const Loader: React.FC = () => {
                 begin="-0.75s"
                 type="scale"
                 attributeName="transform"
-              ></animateTransform>
+              />
               <animate
                 begin="-0.75s"
                 values="1;0"
@@ -54,7 +55,7 @@ const Loader: React.FC = () => {
                 dur="1s"
                 keyTimes="0;1"
                 attributeName="fillOpacity"
-              ></animate>
+              />
             </circle>
           </g>
         </g>
@@ -69,7 +70,7 @@ const Loader: React.FC = () => {
                 begin="-0.625s"
                 type="scale"
                 attributeName="transform"
-              ></animateTransform>
+              />
               <animate
                 begin="-0.625s"
                 values="1;0"
@@ -77,7 +78,7 @@ const Loader: React.FC = () => {
                 dur="1s"
                 keyTimes="0;1"
                 attributeName="fillOpacity"
-              ></animate>
+              />
             </circle>
           </g>
         </g>
@@ -92,7 +93,7 @@ const Loader: React.FC = () => {
                 begin="-0.5s"
                 type="scale"
                 attributeName="transform"
-              ></animateTransform>
+              />
               <animate
                 begin="-0.5s"
                 values="1;0"
@@ -100,7 +101,7 @@ const Loader: React.FC = () => {
                 dur="1s"
                 keyTimes="0;1"
                 attributeName="fillOpacity"
-              ></animate>
+              />
             </circle>
           </g>
         </g>
@@ -115,7 +116,7 @@ const Loader: React.FC = () => {
                 begin="-0.375s"
                 type="scale"
                 attributeName="transform"
-              ></animateTransform>
+              />
               <animate
                 begin="-0.375s"
                 values="1;0"
@@ -123,7 +124,7 @@ const Loader: React.FC = () => {
                 dur="1s"
                 keyTimes="0;1"
                 attributeName="fillOpacity"
-              ></animate>
+              />
             </circle>
           </g>
         </g>
@@ -138,7 +139,7 @@ const Loader: React.FC = () => {
                 begin="-0.25s"
                 type="scale"
                 attributeName="transform"
-              ></animateTransform>
+              />
               <animate
                 begin="-0.25s"
                 values="1;0"
@@ -146,7 +147,7 @@ const Loader: React.FC = () => {
                 dur="1s"
                 keyTimes="0;1"
                 attributeName="fillOpacity"
-              ></animate>
+              />
             </circle>
           </g>
         </g>
@@ -161,7 +162,7 @@ const Loader: React.FC = () => {
                 begin="-0.125s"
                 type="scale"
                 attributeName="transform"
-              ></animateTransform>
+              />
               <animate
                 begin="-0.125s"
                 values="1;0"
@@ -169,7 +170,7 @@ const Loader: React.FC = () => {
                 dur="1s"
                 keyTimes="0;1"
                 attributeName="fillOpacity"
-              ></animate>
+              />
             </circle>
           </g>
         </g>
@@ -184,7 +185,7 @@ const Loader: React.FC = () => {
                 begin="0s"
                 type="scale"
                 attributeName="transform"
-              ></animateTransform>
+              />
               <animate
                 begin="0s"
                 values="1;0"
@@ -192,11 +193,11 @@ const Loader: React.FC = () => {
                 dur="1s"
                 keyTimes="0;1"
                 attributeName="fillOpacity"
-              ></animate>
+              />
             </circle>
           </g>
         </g>
-        <g></g>
+        <g />
       </g>
     </svg>
   );

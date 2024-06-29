@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Actor.module.css';
 
 interface ActorProps {

@@ -1,3 +1,4 @@
+import React from "react";
 import styles from './SearchIcon.module.css';
 
 const SearchIcon: React.FC = () => {
