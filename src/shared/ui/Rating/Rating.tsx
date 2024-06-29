@@ -17,8 +17,8 @@ const Rating: React.FC<RatingProps> = ({ rating, onRate, auth }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
 
   const handleRate = (rate: number) => {
-    setUserRate(rate);
-    if (onRate) {
+    if (auth && onRate) {
+      setUserRate(rate);
       localStorage.setItem('rate2024', rate.toString());
       onRate(rate);
     }
