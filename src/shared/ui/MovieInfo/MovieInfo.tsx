@@ -6,6 +6,11 @@ import { selectIsAuthenticated } from '../../../entities/Auth/model/slice';
 import movieApi from '../../api/api';
 import { useState } from 'react';
 
+type Actor = {
+  name: string;
+  photo: string; // base64 img
+};
+
 interface MovieInfoProps {
   movie: {
     id: string;
@@ -15,9 +20,8 @@ interface MovieInfoProps {
     poster: string;
     genre: string;
     rating: string;
-    director: string;
-    cast: string[];
-    duration: string;
+    total_rates_count: string;
+    actors: Actor[];
   };
 }
 

@@ -1,0 +1,19 @@
+.actor {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.photo {
+  width: 160px;
+  height: 230px;
+  border-radius: 8px;
+}
+
+.name {
+  color: rgb(27, 31, 35);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+}

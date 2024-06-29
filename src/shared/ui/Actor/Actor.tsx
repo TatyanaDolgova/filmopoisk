@@ -10,11 +10,7 @@ interface ActorProps {
 const Actor: React.FC<ActorProps> = ({ actor }) => {
   return (
     <div className={styles.actor}>
-      <img
-        src={`data:image/jpeg;base64,${actor.photo}`}
-        alt={actor.name}
-        className={styles.photo}
-      />
+      <img src={`${actor.photo}`} alt={actor.name} className={styles.photo} />
       <span className={styles.name}>{actor.name}</span>
     </div>
   );

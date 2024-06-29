@@ -5,6 +5,7 @@ import Loader from '../../shared/ui/Loader/Loader';
 
 import styles from './MoviePage.module.css';
 import MovieInfo from '../../shared/ui/MovieInfo/MovieInfo';
+import Actor from '../../shared/ui/Actor/Actor';
 
 const MoviePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -21,6 +22,14 @@ const MoviePage: React.FC = () => {
   return (
     <div className={styles.container}>
       <MovieInfo movie={movie} />
+      <div className={styles.actors}>
+        <h3 className={styles.actorsTitle}>Актёры</h3>
+        <div className={styles.actorsList}>
+          {movie.actors.map((actor, index) => (
+            <Actor key={index} actor={actor} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

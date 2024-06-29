@@ -54,7 +54,7 @@ const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { data, isLoading } = movieApi.useGetMoviesQuery(filters);
+  const { data, isLoading, isFetching } = movieApi.useGetMoviesQuery(filters);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
@@ -197,8 +197,8 @@ const HomePage: React.FC = () => {
           <SearchIcon />
           {filters.title && <CloseIcon onClick={clearSearch} />}
         </div>
-        {isLoading && <Loader />}
-        {data?.search_result.length === 0 && (
+        {(isLoading || isFetching) && <Loader />}
+        {data?.search_result.length === 0 && !isFetching && !isLoading && (
           <div className={styles.notFound}>
             <h3 className={styles.notFoundTitle}>Фильмы не найдены</h3>
             <p className={styles.notFoundText}>
@@ -211,7 +211,7 @@ const HomePage: React.FC = () => {
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
-        {data?.search_result.length !== 0 && !isLoading && (
+        {data?.search_result.length !== 0 && !isLoading && !isFetching && (
           <div className={styles.pagination}>
             <button
               className={styles.paginationBtn}

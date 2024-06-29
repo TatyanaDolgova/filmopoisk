@@ -33,9 +33,8 @@ export interface FullMovieInfo {
   poster: string;
   genre: string;
   rating: string;
-  director: string;
-  cast: string[];
-  duration: string;
+  total_rates_count: string;
+  actors: Actor[];
 }
 
 interface RateMovieRequest {
@@ -84,23 +83,6 @@ const movieApi = createApi({
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
         body: { movieId, user_rate },
-      }),
-    }),
-  }),
-});
-
-export const actorApi = createApi({
-  reducerPath: 'actorApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3004/' }),
-  endpoints: (builder) => ({
-    getActor: builder.query<Actor, string>({
-      query: (id) => ({
-        url: `/actor`,
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        params: { id },
       }),
     }),
   }),
