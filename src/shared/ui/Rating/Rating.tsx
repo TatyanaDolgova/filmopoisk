@@ -7,19 +7,26 @@ interface RatingProps {
   rating: string;
   onRate?: (userRate: number) => void;
   auth: boolean;
+  movieId: string; // New prop for movie ID
 }
 
-const Rating: React.FC<RatingProps> = ({ rating, onRate, auth }) => {
+const Rating: React.FC<RatingProps> = ({ rating, onRate, auth, movieId }) => {
   const [userRate, setUserRate] = useState<number>(() => {
-    const storedRating = localStorage.getItem('rate2024');
-    return storedRating ? +storedRating : 0;
+    const storedRatings = JSON.parse(
+      localStorage.getItem('ratings2024') || '{}'
+    );
+    return storedRatings[movieId] || 0;
   });
   const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
 
   const handleRate = (rate: number) => {
     if (auth && onRate) {
       setUserRate(rate);
-      localStorage.setItem('rate2024', rate.toString());
+      const storedRatings = JSON.parse(
+        localStorage.getItem('ratings2024') || '{}'
+      );
+      storedRatings[movieId] = rate;
+      localStorage.setItem('ratings2024', JSON.stringify(storedRatings));
       onRate(rate);
     }
   };
@@ -29,13 +36,15 @@ const Rating: React.FC<RatingProps> = ({ rating, onRate, auth }) => {
   ]);
 
   useEffect(() => {
-    const storedRating = localStorage.getItem('rate2024');
-    if (storedRating) {
-      setUserRate(+storedRating);
+    const storedRatings = JSON.parse(
+      localStorage.getItem('ratings2024') || '{}'
+    );
+    if (storedRatings[movieId]) {
+      setUserRate(storedRatings[movieId]);
     } else {
-      setUserRate(+rating);
+      setUserRate(0);
     }
-  }, [rating]);
+  }, [rating, movieId]);
 
   return (
     <div className={styles.rating}>

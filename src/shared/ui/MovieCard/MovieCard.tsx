@@ -40,7 +40,12 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
           <p className={styles.description}>{movie.description}</p>
         </div>
       </div>
-      <Rating rating={movie.rating} onRate={undefined} auth={false} />
+      <Rating
+        rating={movie.rating}
+        onRate={undefined}
+        auth={false}
+        movieId={movie.id}
+      />
     </div>
   );
 };
