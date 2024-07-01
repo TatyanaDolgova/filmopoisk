@@ -1,30 +1,24 @@
-# React + TypeScript + Vite
+# Фильмопоиск
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Для запуска проекта выполните следующие шаги:
 
-Currently, two official plugins are available:
+1. Клонируйте репозиторий 
+`git clone https://github.com/TatyanaDolgova/filmopoisk`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. Установите зависимости
+`npm i`
 
-## Expanding the ESLint configuration
+### Для запуска проекта выполните следующие шаги:
+1. Запустите команду 
+`npm run dev`
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. Запустите необходимые сервера.
 
-- Configure the top-level `parserOptions` property like this:
+3. Откройте приложение по адресу http://localhost:5173
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Самооценка:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+#### Базовые требования:
+-[x] Создан github-репозиторий, в нём есть README, gitignore, установлены все необходимые зависимости — 5 баллов.
+-[x] Проект запускается — 5 баллов.
+-[x] Вёрстка соответствует дизайн-макетам (допускаются минимальные отхождения, адаптив не требуется) — 5 баллов.
