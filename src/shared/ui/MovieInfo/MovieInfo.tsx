@@ -72,11 +72,14 @@ const MovieInfo: React.FC<MovieInfoProps> = ({ movie }) => {
           <p className={styles.description}>{movie.description}</p>
         </div>
       </div>
-      <Rating
-        rating={movie.rating}
-        onRate={isAuthenticated ? handleRating : undefined}
-        auth={!!isAuthenticated}
-      />
+      {isAuthenticated && (
+        <Rating
+          rating={movie.rating}
+          onRate={isAuthenticated ? handleRating : undefined}
+          auth={!!isAuthenticated}
+          movieId={movie.id}
+        />
+      )}
     </div>
   );
 };
